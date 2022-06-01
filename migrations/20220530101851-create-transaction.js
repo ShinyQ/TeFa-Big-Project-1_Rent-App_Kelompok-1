@@ -9,21 +9,27 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       userId: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       ownerId: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       itemId: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       qty: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       status: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       deadline: {
+        allowNull: false,
         type: Sequelize.DATE
       },
       createdAt: {

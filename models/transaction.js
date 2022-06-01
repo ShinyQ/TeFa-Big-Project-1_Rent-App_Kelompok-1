@@ -5,17 +5,7 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class transaction extends Model {
     static associate(models) {
-      transaction.hasOne(models.user, {
-        as: 'user',
-        foreignKey: 'userId'
-      })
 
-      transaction.hasOne(models.user, {
-        as: 'owner',
-        foreignKey: 'ownerId'
-      })
-
-      transaction.hasOne(models.item)
     }
   }
   transaction.init({

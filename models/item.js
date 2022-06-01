@@ -6,8 +6,8 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class item extends Model {
     static associate(models) {
-      item.hasOne(models.user)
-      item.hasOne(models.category)
+      item.belongsTo(models.category)
+      item.belongsTo(models.user)
     }
   }
   item.init({
