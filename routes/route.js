@@ -14,10 +14,11 @@ module.exports = (express) => {
         res.status(200).send({ message: "App Is Running Successfully!" });
     });
     
-    require('../routes/auth')(route);
-    require('../routes/user')(route);
-    require('../routes/item')(route);
-    require('../routes/category')(route);
+    require('../routes/auth')(route)
+    require('../routes/user')(route)
+    require('../routes/item')(route)
+    require('../routes/category')(route)
+    require('../routes/transaction')(route)
 
     return route;
 }

@@ -55,7 +55,7 @@ exports.signin = async (req, res) => {
             });
         }
 
-        var token = jwt.sign({ id: user.id }, config.secret, {
+        var token = jwt.sign({ id: user.id, isAdmin: user.isAdmin }, config.secret, {
             expiresIn: 86400 
         });
 

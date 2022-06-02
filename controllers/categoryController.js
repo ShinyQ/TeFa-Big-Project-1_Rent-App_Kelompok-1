@@ -17,9 +17,9 @@ exports.addCategory = async (req, res) => {
             code: 500,
             message: err.message,
             data: []
-        });
-    });
-};
+        })
+    })
+}
 
 
 exports.getCategory = async (req, res) => {
@@ -48,7 +48,6 @@ exports.updateCategory = async (req, res) => {
                 message: "Category has been updated successfully!",
                 data: body
             })
-
             return
         }
 

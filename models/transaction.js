@@ -1,11 +1,22 @@
 'use strict';
 const {
   Model
-} = require('sequelize');
+} = require('sequelize')
+
 module.exports = (sequelize, DataTypes) => {
   class transaction extends Model {
     static associate(models) {
+      transaction.belongsTo(models.item)
 
+      transaction.belongsTo(models.user, {
+        as: 'owner',
+        foreignKey: 'ownerId'
+      })
+
+      transaction.belongsTo(models.user, {
+        as: 'user',
+        foreignKey: 'userId'
+      })
     }
   }
   transaction.init({
