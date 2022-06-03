@@ -5,11 +5,11 @@ metadata:
 data:
   APP_NAME: "tefa-sewayuk-kelompok-1"
   APP_PORT: "9000"
-  MYSQL_HOST: "tefa-mariadb-service"
+  MYSQL_HOST: "sewayuk-mariadb-service"
   MYSQL_PORT: "3306"
   MYSQL_DATABASE: "sewayuk"
-  MYSQL_PASSWORD: ""
-  MYSQL_USER: "root"
+  MYSQL_PASSWORD: "password"
+  MYSQL_USER: "dev"
   MYSQL_CONNECTION_LIMIT: "10"
 
 ---

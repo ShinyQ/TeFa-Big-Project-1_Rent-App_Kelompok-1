@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: tefa-mariadb-volume
+  name: sewayuk-mariadb-volume
 spec:
   accessModes:
     - ReadWriteOnce
@@ -15,7 +15,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: tefa-mariadb-volume-claim
+  name: sewayuk-mariadb-volume-claim
 spec:
   accessModes:
     - ReadWriteOnce
@@ -29,34 +29,34 @@ spec:
 apiVersion: v1
 kind: Secret
 metadata:
-  name: tefa-mariadb-secret
+  name: sewayuk-mariadb-secret
 stringData:
-  MYSQL_DATABASE: tefa
+  MYSQL_DATABASE: sewayuk
   MYSQL_PASSWORD: password
   MYSQL_ROOT_PASSWORD: P@ssw0rd
-  MYSQL_USER: tefa_user
+  MYSQL_USER: dev
 
 ---
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tefa-mariadb
+  name: sewayuk-mariadb
   labels:
-    app: tefa-mariadb
+    app: sewayuk-mariadb
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tefa-mariadb
+      app: sewayuk-mariadb
   template:
     metadata:
-      name: tefa-mariadb
+      name: sewayuk-mariadb
       labels:
-        app: tefa-mariadb
+        app: sewayuk-mariadb
     spec:
       containers:
-        - name: tefa-mariadb
+        - name: sewayuk-mariadb
           image: telkomindonesia/debian:mariadb-10.2
           resources:
             limits:
@@ -67,17 +67,17 @@ spec:
               protocol: TCP
           envFrom:
             - secretRef:
-                name: tefa-mariadb-secret
+                name: sewayuk-mariadb-secret
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: tefa-mariadb-service
+  name: sewayuk-mariadb-service
 spec:
   selector:
-    app: tefa-mariadb
+    app: sewayuk-mariadb
   ports:
     - port: 3306
       targetPort: 3306

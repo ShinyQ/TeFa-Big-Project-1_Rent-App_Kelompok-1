@@ -1,0 +1,61 @@
+image: docker:latest
+
+variables:
+    REPOSITORY_URL: shadif/tefa-be-article-app
+    IMAGE_TAG: latest
+
+services:
+    - docker:dind
+
+before_script:
+    - echo "Welcome"
+
+stages:
+    - build
+    - test
+    - release
+    - deploy
+
+build:
+    stage: build
+    script:
+        - docker login --username=$DH_USERNAME --password=$DH_PASSWORD
+        - echo "Building image..."
+        - docker build
+            -t tefa-sewayuk-kelompok-1
+            --no-cache .
+        - echo "Tagging image..."
+        - docker tag tefa-sewayuk-kelompok-1:latest $REPOSITORY_URL:latest
+        - echo "Pushing image..."
+        - docker push $REPOSITORY_URL:latest
+    only:
+        - master
+
+test:
+    stage: test
+    script: 
+        - echo "Test"
+    dependencies:
+        - build
+    only:
+        - master
+
+release:
+    stage: release
+    script: 
+        - echo "Release"
+    dependencies:
+        - test
+    only:
+        - master
+
+
+
+deploy:
+    stage: deploy
+    script:
+        - echo "Deploy"
+    dependencies:
+        - release
+    only:
+        - master
