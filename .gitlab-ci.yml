@@ -29,7 +29,7 @@ build:
         - echo "Pushing image..."
         - docker push $REPOSITORY_URL:latest
     only:
-        - master
+        - main
 
 test:
     stage: test
