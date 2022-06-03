@@ -31,31 +31,30 @@ build:
     only:
         - main
 
-test:
-    stage: test
-    script: 
-        - echo "Test"
-    dependencies:
-        - build
-    only:
-        - master
+test: 
+  stage: test 
+  script: 
+    - echo "Test"
+  dependencies:
+    - build 
+  only:
+    - main
 
 release:
-    stage: release
-    script: 
-        - echo "Release"
-    dependencies:
-        - test
-    only:
-        - master
+  stage: release 
+  script: 
+    - echo "Release To Heroku!"
+  only:
+    - main
 
-
-
-deploy:
-    stage: deploy
-    script:
-        - echo "Deploy"
-    dependencies:
-        - release
-    only:
-        - master
+deploy: 
+  stage: deploy 
+  image: ruby:latest 
+  before_script:
+    - gem install dpl 
+  script: 
+    - dpl --provider=heroku --app=$HEROKU_APP --api-key=$HEROKU_API
+  dependencies:
+    - test
+  only: 
+    - main
