@@ -11,10 +11,13 @@ RUN apk add --update --no-cache --virtual .build-dev \
     && npm i -g npm@6.14.11 \
     && npm i -g node-gyp \
     && npm i \
+    && npm install sequelize-cli -g \
+    && npm install express sequelize mysql2 --save \
+    && npm install nodemon --save-dev \
     && apk del .build-dev
 
 COPY . .
 
 EXPOSE 8080
 
-CMD ["npm", "start"]
+CMD ["npm", "run", "start"]

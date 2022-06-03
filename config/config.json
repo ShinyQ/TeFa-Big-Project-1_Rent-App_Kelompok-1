@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": null,
+    "username": "dev",
+    "password": "password",
     "database": "sewayuk",
-    "host": "127.0.0.1",
+    "host": "tefa-sewayuk-kelompok-1.shadif.local",
     "dialect": "mysql"
   },
   "test": {
