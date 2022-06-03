@@ -51,11 +51,10 @@ deploy:
   stage: deploy 
   image: ruby:latest 
   before_script:
-    - gem install dpl 
-  script: 
     - apt-get update -yq
     - apt-get install -y ruby ruby-dev rubygems-integration
-    - gem install dpl
+    - gem install dpl 
+  script: 
     - dpl --provider=heroku --app=$HEROKU_APP --api-key=$HEROKU_API
   dependencies:
     - test
